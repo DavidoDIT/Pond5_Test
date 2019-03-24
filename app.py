@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, git a
 from bs4 import BeautifulSoup
 import platform
 import requests
@@ -19,8 +19,7 @@ def ping():
         return "PONG!"
     else:
         return "Error"
-
-
+# Here the platform import is used to show all of the system information and it is returned in JSON format
 @app.route("/system")
 def system():
     info = {
@@ -31,11 +30,13 @@ def system():
     }
     return jsonify(info)
 
-
+# Route to get all media information, given the media_id
 @app.route("/mediainfo/<media_id>", methods=["GET"])
 def media(media_id):
     page = requests.get("https://www.pond5.com/photo/" + str(media_id))
     print(page.status_code)  # Checking for a 200 response
+
+# BeautifulSoup is used to parse the html page and collect the relevant information
     soup = BeautifulSoup(page.text, "html.parser")
     filename = soup.find("meta", property="og:image")
     filename = filename["content"]
@@ -47,6 +48,7 @@ def media(media_id):
     title = title["content"]
     size = soup.find_all("dd")[12].text
 
+# Creating a dictionary with all of the media information
     pic_info = {
         "filename": filename,
         "size": size,
@@ -55,6 +57,7 @@ def media(media_id):
         "title": title,
     }
 
+# Returning the media information in JSON format
     return jsonify(pic_info)
 
 
