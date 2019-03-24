@@ -39,11 +39,12 @@ There was three main parts in this test which included:
 
 After completion of these questions I tested the endpoints using Postman. You can test in Postman too or use your browser and navigate to localhost and port:5000.
 
-<img src="postman_test_images/Get_PingPong.png" width="100", height="10" >
 
-<img src="postman_test_images/Get_System.png" width="100", height="10" >
+![](postman_test_images/Get_PingPong.png)
 
-<img src="postman_test_images/Get_Media_info.png" width="100", height="10" >
+![](postman_test_images/Get_System.png)
+
+![](postman_test_images/Get_Media_info.png)
 
 
 ## Unit Tests
