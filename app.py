@@ -5,13 +5,14 @@ import requests
 
 app = Flask(__name__)
 
-
+# Initial testing route to check if Flask has run successfully .
 @app.route("/")
 def test():
     test = "Test"
     return test
 
 
+# Ping pond5.com, if successfull then return "PONG!", if unsuccessful then return "Error".
 @app.route("/ping", methods=["GET"])
 def ping():
     pond = requests.get("https://www.pond5.com/photo/11497188")
@@ -19,7 +20,9 @@ def ping():
         return "PONG!"
     else:
         return "Error"
-# Here the platform import is used to show all of the system information and it is returned in JSON format
+
+
+# Here the platform import is used to show all of the system information and it is returned in JSON format.
 @app.route("/system")
 def system():
     info = {
@@ -30,13 +33,14 @@ def system():
     }
     return jsonify(info)
 
-# Route to get all media information, given the media_id
+
+# Route to get all media information, given the media_id('11497188').
 @app.route("/mediainfo/<media_id>", methods=["GET"])
 def media(media_id):
     page = requests.get("https://www.pond5.com/photo/" + str(media_id))
     print(page.status_code)  # Checking for a 200 response
 
-# BeautifulSoup is used to parse the html page and collect the relevant information
+    # BeautifulSoup is used to parse the html page and collect the relevant information
     soup = BeautifulSoup(page.text, "html.parser")
     filename = soup.find("meta", property="og:image")
     filename = filename["content"]
@@ -48,7 +52,7 @@ def media(media_id):
     title = title["content"]
     size = soup.find_all("dd")[12].text
 
-# Creating a dictionary with all of the media information
+    # Creating a dictionary with all of the media information
     pic_info = {
         "filename": filename,
         "size": size,
@@ -57,7 +61,7 @@ def media(media_id):
         "title": title,
     }
 
-# Returning the media information in JSON format
+    # Returning the media information in JSON format
     return jsonify(pic_info)
 
 
