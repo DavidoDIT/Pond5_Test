@@ -1,4 +1,4 @@
-from flask import Flask, git a
+from flask import Flask,
 from bs4 import BeautifulSoup
 import platform
 import requests
