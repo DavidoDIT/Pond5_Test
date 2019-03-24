@@ -45,8 +45,6 @@ def media(media_id):
     width = width["content"]
     title = soup.find("meta", property="twitter:title")
     title = title["content"]
-    type = soup.find("meta", property="og:image:type")
-    type = type["content"]
     size = soup.find_all("dd")[12].text
 
     pic_info = {
