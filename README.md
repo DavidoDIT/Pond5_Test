@@ -10,7 +10,7 @@ You can run this code locally by cloning the repo into your current directory.
 
 In the same directory in your terminal run
 ```bash
-python app.py'
+python app.py
 ```
 To view in your browser, go to [localhost](http://localhost:5000/)
 
@@ -39,11 +39,14 @@ There was three main parts in this test which included:
 
 After completion of these questions I tested the endpoints using Postman. You can test in Postman too or use your browser and navigate to localhost and port:5000.
 
-
+Q.1
 ![](postman_test_images/Get_PingPong.png)
 
+Q.2
 ![](postman_test_images/Get_System.png)
 
+
+Q.3
 ![](postman_test_images/Get_Media_info.png)
 
 
@@ -51,5 +54,5 @@ After completion of these questions I tested the endpoints using Postman. You ca
 
 To run simple unit tests run the command:
 ```bash
-python test_app.py'
+python test_app.py
 ```
